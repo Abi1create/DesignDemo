@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Portfolio Template</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #080808;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation */
+        .top-menu {
+            background: #1B1B1B;
+            padding: 24px 0;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: center;
+            gap: 70px;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 180px;
+        }
+
+        .nav-item {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 14px;
+            color: #9C9C9C;
+            text-decoration: none;
+            font-weight: 400;
+            letter-spacing: 1%;
+        }
+
+        .nav-item:hover {
+            color: #fff;
+        }
+
+        /* Social Media Icons */
+        .social-icons {
+            position: fixed;
+            top: 26px;
+            right: 20px;
+            display: flex;
+            gap: 20px;
+            z-index: 1001;
+        }
+
+        .social-icon {
+            width: 18px;
+            height: 17px;
+            opacity: 0.3;
+            transition: opacity 0.3s ease;
+        }
+
+        .social-icon:hover {
+            opacity: 1;
+        }
+
+        /* Header Section */
+        .header {
+            background: #080808;
+            min-height: 700px;
+            display: flex;
+            align-items: center;
+            padding-top: 70px;
+            position: relative;
+        }
+
+        .header-content {
+            display: grid;
+            grid-template-columns: 1fr 350px;
+            gap: 50px;
+            align-items: center;
+            width: 100%;
+            padding: 0 180px;
+        }
+
+        .header-text {
+            color: white;
+        }
+
+        .header-text h1 {
+            font-family: 'Raleway', sans-serif;
+            font-weight: 800;
+            font-size: 44px;
+            line-height: 1.174;
+            margin-bottom: 30px;
+        }
+
+        .header-text p {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 14px;
+            line-height: 1.714;
+            color: #9C9C9C;
+            letter-spacing: 1%;
+            width: 492px;
+            margin-bottom: 30px;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #3F8E00;
+            color: white;
+            padding: 21px 64px;
+            border: 1px solid #62BA1B;
+            border-radius: 4px;
+            text-decoration: none;
+            font-family: 'IBM Plex Mono', monospace;
+            font-weight: 700;
+            font-size: 16px;
+            box-shadow: 0px 8px 30px 0px rgba(63, 142, 0, 0.5);
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0px 12px 40px 0px rgba(63, 142, 0, 0.7);
+        }
+
+        .profile-photo {
+            width: 350px;
+            height: 350px;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+
+        .profile-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .worked-with {
+            position: absolute;
+            bottom: 140px;
+            left: 180px;
+        }
+
+        .worked-with h3 {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 14px;
+            color: white;
+            margin-bottom: 38px;
+        }
+
+        .client-logos {
+            display: flex;
+            gap: 30px;
+        }
+
+        .logo-box {
+            width: 160px;
+            height: 60px;
+            border: 1px solid #1B1B1B;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0.3;
+            transition: opacity 0.3s ease;
+        }
+
+        .logo-box:hover {
+            opacity: 1;
+        }
+
+        /* Case Studies Section */
+        .case-studies {
+            background: white;
+            padding: 80px 0;
+        }
+
+        .case-studies .container {
+            padding: 0 208px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-header h2 {
+            font-family: 'Raleway', sans-serif;
+            font-weight: 800;
+            font-size: 34px;
+            color: #080808;
+            margin-bottom: 20px;
+        }
+
+        .section-header p {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 14px;
+            line-height: 1.714;
+            color: #9C9C9C;
+            width: 570px;
+            margin: 0 auto;
+        }
+
+        .case-study-grid {
+            display: grid;
+            gap: 380px 5px;
+        }
+
+        .case-study-item {
+            display: grid;
+            grid-template-columns: 445px 1fr;
+            gap: 47px;
+            align-items: start;
+        }
+
+        .case-study-item:nth-child(even) {
+            grid-template-columns: 1fr 445px;
+        }
+
+        .case-study-item:nth-child(even) .case-study-content {
+            order: 1;
+        }
+
+        .case-study-item:nth-child(even) .case-study-image {
+            order: 2;
+        }
+
+        .case-study-image {
+            width: 445px;
+            height: 300px;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .case-study-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .case-study-content {
+            padding-top: 27px;
+        }
+
+        .case-study-tag {
+            display: inline-block;
+            padding: 0 10px;
+            border-radius: 60px;
+            font-family: 'IBM Plex Mono', monospace;
+            font-weight: 700;
+            font-size: 12px;
+            line-height: 2;
+            margin-bottom: 44px;
+        }
+
+        .tag-fintech {
+            background: #FFF6E9;
+            color: #FFA217;
+        }
+
+        .tag-edtech {
+            background: #D0E6FF;
+            color: #000AFF;
+        }
+
+        .tag-pharma {
+            background: #E0FFF8;
+            color: #2AB090;
+        }
+
+        .case-study-content h3 {
+            font-family: 'Raleway', sans-serif;
+            font-weight: 800;
+            font-size: 24px;
+            color: #080808;
+            margin-bottom: 38px;
+        }
+
+        .case-study-content p {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 14px;
+            line-height: 1.714;
+            color: #9C9C9C;
+            margin-bottom: 58px;
+        }
+
+        .case-study-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 24px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-family: 'IBM Plex Mono', monospace;
+            font-weight: 700;
+            font-size: 14px;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .btn-fintech {
+            background: #FFA217;
+            box-shadow: 0px 8px 30px 0px rgba(42, 176, 144, 0.1);
+        }
+
+        .btn-edtech {
+            background: #000AFF;
+            box-shadow: 0px 8px 30px 0px rgba(0, 10, 255, 0.1);
+        }
+
+        .btn-pharma {
+            background: #2AB090;
+            box-shadow: 0px 8px 30px 0px rgba(42, 176, 144, 0.1);
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            background: #080808;
+            padding: 80px 0;
+        }
+
+        .testimonials .section-header h2 {
+            color: white;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 445px);
+            gap: 50px 30px;
+            justify-content: center;
+            margin-top: 78px;
+        }
+
+        .testimonial-item {
+            background: white;
+            border-radius: 6px;
+            border: 1px solid transparent;
+            background-image: linear-gradient(white, white), 
+                            linear-gradient(90deg, #484848 0%, rgba(27, 27, 27, 0) 100%);
+            background-origin: border-box;
+            background-clip: content-box, border-box;
+            padding: 30px;
+            height: 212px;
+            position: relative;
+        }
+
+        .testimonial-text {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 14px;
+            line-height: 1.714;
+            color: #9C9C9C;
+            margin-bottom: 45px;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            position: absolute;
+            bottom: 30px;
+        }
+
+        .author-photo {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+
+        .author-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .author-name {
+            font-family: 'Raleway', sans-serif;
+            font-weight: 700;
+            font-size: 18px;
+            color: #080808;
+        }
+
+        .quote-mark {
+            font-family: 'Raleway', sans-serif;
+            font-size: 100px;
+            color: white;
+            position: absolute;
+            opacity: 0.1;
+        }
+
+        .quote-top-left {
+            top: 10px;
+            left: 10px;
+        }
+
+        .quote-top-right {
+            top: 10px;
+            right: 10px;
+        }
+
+        .quote-bottom-left {
+            bottom: 10px;
+            left: 10px;
+        }
+
+        .quote-bottom-right {
+            bottom: 10px;
+            right: 10px;
+        }
+
+        /* Recent Work Section */
+        .recent-work {
+            background: white;
+            padding: 80px 0;
+        }
+
+        .recent-work .container {
+            padding: 0 85px;
+        }
+
+        .work-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 445px);
+            gap: 50px 80px;
+            justify-content: center;
+            margin-top: 78px;
+        }
+
+        .work-item {
+            background: white;
+        }
+
+        .work-image {
+            width: 445px;
+            height: 300px;
+            border-radius: 6px;
+            overflow: hidden;
+            margin-bottom: 40px;
+        }
+
+        .work-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .work-content h3 {
+            font-family: 'Raleway', sans-serif;
+            font-weight: 800;
+            font-size: 24px;
+            color: #080808;
+            margin-bottom: 48px;
+        }
+
+        .work-content p {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 14px;
+            line-height: 1.714;
+            color: #9C9C9C;
+            margin-bottom: 68px;
+        }
+
+        .work-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #3F8E00;
+            color: white;
+            padding: 10px 24px;
+            border: 1px solid #62BA1B;
+            border-radius: 4px;
+            text-decoration: none;
+            font-family: 'IBM Plex Mono', monospace;
+            font-weight: 700;
+            font-size: 14px;
+            box-shadow: 0px 8px 30px 0px rgba(63, 142, 0, 0.3);
+        }
+
+        .navigation-arrows {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 50px;
+        }
+
+        .nav-arrow {
+            width: 44px;
+            height: 44px;
+            border: 1px solid #9C9C9C;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .nav-arrow:hover {
+            background: #3F8E00;
+            border-color: #3F8E00;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: #080808;
+            padding: 80px 0;
+        }
+
+        .contact .section-header h2 {
+            color: white;
+        }
+
+        .contact-form {
+            max-width: 350px;
+            margin: 0 auto;
+            margin-top: 50px;
+        }
+
+        .form-group {
+            margin-bottom: 41px;
+        }
+
+        .form-group label {
+            display: block;
+            font-family: 'IBM Plex Mono', monospace;
+            font-weight: 600;
+            font-size: 12px;
+            color: white;
+            margin-bottom: 5px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #D8D8D8;
+            border-radius: 4px;
+            background: #F8F8F8;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 12px;
+            color: #757575;
+        }
+
+        .form-group input {
+            height: 40px;
+        }
+
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        .contact-submit {
+            display: flex;
+            justify-content: center;
+            margin-top: 40px;
+        }
+
+        .submit-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #3F8E00;
+            color: white;
+            padding: 16px 24px;
+            border: 1px solid #62BA1B;
+            border-radius: 4px;
+            text-decoration: none;
+            font-family: 'IBM Plex Mono', monospace;
+            font-weight: 700;
+            font-size: 14px;
+            box-shadow: 0px 8px 30px 0px rgba(63, 142, 0, 0.3);
+            cursor: pointer;
+            border: none;
+        }
+
+        /* Footer */
+        .footer {
+            background: #1B1B1B;
+            padding: 30px 0;
+            text-align: center;
+        }
+
+        .footer p {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 14px;
+            color: #9C9C9C;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .container {
+                padding: 0 40px;
+            }
+            
+            .header-content {
+                padding: 0 40px;
+            }
+            
+            .nav-container {
+                padding: 0 40px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 30px;
+            }
+            
+            .case-study-item,
+            .case-study-item:nth-child(even) {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .case-study-item:nth-child(even) .case-study-content,
+            .case-study-item:nth-child(even) .case-study-image {
+                order: initial;
+            }
+            
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .work-grid {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+            
+            .nav-container {
+                flex-wrap: wrap;
+                gap: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="top-menu">
+        <div class="nav-container">
+            <a href="#home" class="nav-item">Home</a>
+            <a href="#case-studies" class="nav-item">Case Studies</a>
+            <a href="#testimonials" class="nav-item">Testimonials</a>
+            <a href="#recent-work" class="nav-item">Recent work</a>
+            <a href="#contact" class="nav-item">Get In Touch</a>
+        </div>
+        
+        <!-- Social Media Icons -->
+        <div class="social-icons">
+            <svg class="social-icon" viewBox="0 0 18 17" fill="white">
+                <path d="M5.65 17C2.53 17 0 14.47 0 11.35V5.65C0 2.53 2.53 0 5.65 0h6.7C15.47 0 18 2.53 18 5.65v5.7C18 14.47 15.47 17 12.35 17H5.65z"/>
+            </svg>
+            <svg class="social-icon" viewBox="0 0 22 14" fill="white">
+                <path d="M21.6 2.2c-.8.35-1.65.59-2.54.7.91-.55 1.61-1.41 1.94-2.44-.85.51-1.79.88-2.79 1.08C17.37.74 16.22.17 14.95.17c-2.44 0-4.42 1.98-4.42 4.42 0 .35.04.68.11 1.01C7.09 5.45 3.76 3.67 1.53.85c-.38.65-.6 1.41-.6 2.22 0 1.53.78 2.88 1.96 3.67-.72-.02-1.4-.22-1.99-.55v.06c0 2.14 1.52 3.93 3.54 4.33-.37.1-.76.15-1.16.15-.28 0-.56-.03-.83-.08.56 1.75 2.18 3.02 4.1 3.06-1.51 1.18-3.41 1.88-5.47 1.88-.36 0-.71-.02-1.05-.06C1.97 16.58 4.31 17.3 6.81 17.3c8.18 0 12.65-6.78 12.65-12.65 0-.19 0-.39-.01-.58.87-.63 1.62-1.41 2.22-2.3l-.07-.03z"/>
+            </svg>
+            <svg class="social-icon" viewBox="0 0 18 17" fill="white">
+                <path d="M15.9 0H2.1C.94 0 0 .94 0 2.1v12.8C0 16.06.94 17 2.1 17h13.8c1.16 0 2.1-.94 2.1-2.1V2.1C18 .94 17.06 0 15.9 0zM5.4 14.45H2.7V6.34h2.7v8.11zM4.05 5.23c-.86 0-1.56-.7-1.56-1.56s.7-1.56 1.56-1.56 1.56.7 1.56 1.56-.7 1.56-1.56 1.56zM15.3 14.45h-2.7v-3.95c0-1.01-.02-2.31-1.41-2.31-1.41 0-1.63 1.1-1.63 2.24v4.02H6.86V6.34h2.59v1.11h.04c.36-.68 1.24-1.4 2.55-1.4 2.73 0 3.23 1.8 3.23 4.14v4.26h.03z"/>
+            </svg>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <section id="home" class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="header-text">
+                    <h1>Your Name Here</h1>
+                    <p>Intro text: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <a href="#contact" class="cta-button">
+                        Let's get started
+                        <svg width="6" height="10" viewBox="0 0 6 10" fill="currentColor">
+                            <path d="M1 1l4 4-4 4"/>
+                        </svg>
+                    </a>
+                </div>
+                <div class="profile-photo">
+                    <img src="portfolio-images/profile-photo.png" alt="Profile Photo">
+                </div>
+            </div>
+            
+            <div class="worked-with">
+                <h3>Worked with</h3>
+                <div class="client-logos">
+                    <div class="logo-box">
+                        <span>ClickUp</span>
+                    </div>
+                    <div class="logo-box">
+                        <span>Dropbox</span>
+                    </div>
+                    <div class="logo-box">
+                        <span>Patreon</span>
+                    </div>
+                    <div class="logo-box">
+                        <span>Elastic</span>
+                    </div>
+                    <div class="logo-box">
+                        <span>Discord</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Case Studies Section -->
+    <section id="case-studies" class="case-studies">
+        <div class="container">
+            <div class="section-header">
+                <h2>Case Studies</h2>
+                <p>Solving user & business problems since last 15+ years.<br>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+            
+            <div class="case-study-grid">
+                <div class="case-study-item">
+                    <div class="case-study-image">
+                        <img src="portfolio-images/case-study-3.png" alt="Case Study 1">
+                    </div>
+                    <div class="case-study-content">
+                        <span class="case-study-tag tag-fintech">Fintech</span>
+                        <h3>Work name here</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
+                    </div>
+                </div>
+                
+                <div class="case-study-item">
+                    <div class="case-study-content">
+                        <span class="case-study-tag tag-edtech">EdTech</span>
+                        <h3>Work name here</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
+                        <a href="#" class="case-study-btn btn-edtech">
+                            View case study
+                            <svg width="6" height="10" viewBox="0 0 6 10" fill="currentColor">
+                                <path d="M1 1l4 4-4 4"/>
+                            </svg>
+                        </a>
+                    </div>
+                    <div class="case-study-image">
+                        <img src="portfolio-images/case-study-2.png" alt="Case Study 2">
+                    </div>
+                </div>
+                
+                <div class="case-study-item">
+                    <div class="case-study-image">
+                        <img src="portfolio-images/case-study-1.png" alt="Case Study 3">
+                    </div>
+                    <div class="case-study-content">
+                        <span class="case-study-tag tag-pharma">Pharma</span>
+                        <h3>Work name here</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
+                        <a href="#" class="case-study-btn btn-pharma">
+                            View case study
+                            <svg width="6" height="10" viewBox="0 0 6 10" fill="currentColor">
+                                <path d="M1 1l4 4-4 4"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 50px;">
+                <a href="#" class="case-study-btn btn-fintech">
+                    View case study
+                    <svg width="6" height="10" viewBox="0 0 6 10" fill="currentColor">
+                        <path d="M1 1l4 4-4 4"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2>Testimonials</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+            
+            <div class="testimonials-grid">
+                <div class="testimonial-item">
+                    <p class="testimonial-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <div class="testimonial-author">
+                        <div class="author-photo">
+                            <img src="https://via.placeholder.com/50" alt="Client Photo">
+                        </div>
+                        <span class="author-name">Client Name</span>
+                    </div>
+                </div>
+                
+                <div class="testimonial-item">
+                    <p class="testimonial-text">Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <div class="testimonial-author">
+                        <div class="author-photo">
+                            <img src="https://via.placeholder.com/50" alt="Client Photo">
+                        </div>
+                        <span class="author-name">Client Name</span>
+                    </div>
+                </div>
+                
+                <div class="testimonial-item">
+                    <p class="testimonial-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <div class="testimonial-author">
+                        <div class="author-photo">
+                            <img src="https://via.placeholder.com/50" alt="Client Photo">
+                        </div>
+                        <span class="author-name">Client Name</span>
+                    </div>
+                </div>
+                
+                <div class="testimonial-item">
+                    <p class="testimonial-text">Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <div class="testimonial-author">
+                        <div class="author-photo">
+                            <img src="https://via.placeholder.com/50" alt="Client Photo">
+                        </div>
+                        <span class="author-name">Client Name</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Quote marks positioned around testimonials -->
+            <div class="quote-mark quote-top-left">"</div>
+            <div class="quote-mark quote-top-right">"</div>
+            <div class="quote-mark quote-bottom-left">"</div>
+            <div class="quote-mark quote-bottom-right">"</div>
+        </div>
+    </section>
+
+    <!-- Recent Work Section -->
+    <section id="recent-work" class="recent-work">
+        <div class="container">
+            <div class="section-header">
+                <h2>Recent Work</h2>
+                <p>Solving user & business problems since last 15+ years.<br>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+            
+            <div class="work-grid">
+                <div class="work-item">
+                    <div class="work-image">
+                        <img src="portfolio-images/work-image-1.png" alt="Work 1">
+                    </div>
+                    <div class="work-content">
+                        <h3>Work name here</h3>
+                        <p>Labore et dolore magna aliqua. sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
+                        <a href="#" class="work-btn">
+                            Know more
+                            <svg width="6" height="10" viewBox="0 0 6 10" fill="currentColor">
+                                <path d="M1 1l4 4-4 4"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="work-item">
+                    <div class="work-image">
+                        <img src="portfolio-images/work-image-2.png" alt="Work 2">
+                    </div>
+                    <div class="work-content">
+                        <h3>Work name here</h3>
+                        <p>Rempor incididunt ut labore et dolore magna aliqua. sed do eiusmod tempor incididunt u</p>
+                        <a href="#" class="work-btn">
+                            Know more
+                            <svg width="6" height="10" viewBox="0 0 6 10" fill="currentColor">
+                                <path d="M1 1l4 4-4 4"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="navigation-arrows">
+                <div class="nav-arrow">
+                    <svg width="6" height="10" viewBox="0 0 6 10" fill="#9C9C9C">
+                        <path d="M5 9l-4-4 4-4"/>
+                    </svg>
+                </div>
+                <div class="nav-arrow">
+                    <svg width="6" height="10" viewBox="0 0 6 10" fill="#9C9C9C">
+                        <path d="M1 1l4 4-4 4"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2>Get In Touch</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+            
+            <form class="contact-form">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" placeholder="Please enter your email">
+                </div>
+                
+                <div class="form-group">
+                    <label for="mobile">Mobile</label>
+                    <input type="tel" id="mobile" placeholder="Enter mobile">
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" placeholder="Enter your message"></textarea>
+                </div>
+                
+                <div class="contact-submit">
+                    <button type="submit" class="submit-btn">
+                        Submit
+                        <svg width="6" height="10" viewBox="0 0 6 10" fill="currentColor">
+                            <path d="M1 1l4 4-4 4"/>
+                        </svg>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>Made with ❤️</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add active class to navigation items based on scroll position
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section');
+            const navItems = document.querySelectorAll('.nav-item');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navItems.forEach(item => {
+                item.classList.remove('active');
+                if (item.getAttribute('href') === `#${current}`) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        // Form submission handler
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! I\'ll get back to you soon.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
